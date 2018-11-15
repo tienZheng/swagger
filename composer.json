@@ -1,0 +1,19 @@
+{
+    "name": "tien\/swagger",
+    "description": "专门为 ThinkPhp5 生成Api文档，基于 Swagger-php 及 swagger-ui",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tienZheng",
+            "email": "913346548@qq.com"
+        }
+    ],
+    "require": {
+        "zircote/swagger-php": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tien\\Swagger\\": "./src/"
+        }
+    }
+}
