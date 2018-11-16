@@ -1,7 +1,7 @@
 <h1 align="center"> swagger </h1>
 
 <p align="center"> 专门为 ThinkPhp5 生成Api文档，基于 Swagger.</p>
-
+![StyleCI build status](https://github.styleci.io/repos/157714904/shield)
 
 ## Installing
 
