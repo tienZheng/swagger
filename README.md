@@ -14,6 +14,7 @@ $ composer require tien/swagger --dev
 ### 该扩展仅支持 ThinkPhp5 框架使用。目前只提供了生成两种注释，一个是方法体的注释，另外一个是标签（Tag）的注释；而方法体只支持 GET 和 POST 两个请求方式。 
 ### 注意：只能在调试环境下使用，正式环境不会生效。而支持 swagger-php 的版本为 2.0 以上， 3.0 以下.
 ### 默认注释生成的文件在 'application/swagger/'下
+## 需要将安装包 ui 文件下的 dist 目录移动到 public 目录下
 
 ### 生成方法体注释(需要与验证类结合使用)：
 	
@@ -57,7 +58,7 @@ $ composer require tien/swagger --dev
 	
 		//特殊 api 文档参数，如权限验证 token 字段可能每个接口或每个类下的接口都会出现，
 		public $specialApiParam = [
-			'token' => ['string', '验证码'， true]，
+			'token' => ['string', '验证码', true],
 		];
 	
 		//这个是验证参数
@@ -105,8 +106,15 @@ $ composer require tien/swagger --dev
 			$this->tienTag()->setContent($tagParam)->update();
 		}
 	}
+
+### 最后在项目的根目录下运行：
+```shell
+$ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagger.json
+```
 	
-### 生成注释效果如下
+### 效果如下
+![avatar](./ui/image/tmp_1.png)
+![avatar](./ui/image/tmp_2.png)
 
 ## Contributing
 
