@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tien
  * Date: 2018/11/15
- * Time: 10:48 AM
+ * Time: 10:48 AM.
  */
 
 namespace Tien\Swagger\traits;
-
 
 use Tien\Swagger\exceptions\Exception;
 use Tien\Swagger\HandleMethod;
@@ -15,44 +14,43 @@ use Tien\Swagger\HandleTag;
 
 trait Tien
 {
-
     protected $path;
 
     /**
-     * 控制器调用的方法
+     * 控制器调用的方法.
      *
      * @var string
      */
     protected $action;
 
     /**
-     * 验证类
+     * 验证类.
      *
      * @var
      */
     protected $validate;
 
     /**
-     * api需要的数据
+     * api需要的数据.
      *
      * @var array
      */
     protected $apiParam;
 
     /**
-     * 验证提示信息
+     * 验证提示信息.
      *
      * @var array
      */
     protected $validateMsgParam;
 
-
     protected $filePath = '';
 
     /**
-     * 创建方法
+     * 创建方法.
      *
      * @return HandleMethod
+     *
      * @throws Exception
      * @throws \Tien\Swagger\exceptions\FileException
      * @throws \Tien\Swagger\exceptions\InvalidArgumentException
@@ -73,35 +71,38 @@ trait Tien
 
         $handleMethod = new HandleMethod($this->filePath, $this->path, $isDev);
         $handleMethod->setContent($this->apiParam);
+
         return $handleMethod;
     }
 
     /**
-     * 设置文件路径
+     * 设置文件路径.
      */
     protected function getFilePath()
     {
         $this->filePath = \think\facade\Env::get('APP_PATH').'swagger'.DIRECTORY_SEPARATOR;
     }
 
-
     /**
-     * 创建标签
+     * 创建标签.
      *
      * @return HandleTag
+     *
      * @throws \Tien\Swagger\exceptions\FileException
      */
     public function tienTag()
     {
         $this->getFilePath();
         $isDev = $this->verifyIsDev();
+
         return new HandleTag($this->filePath, $isDev);
     }
 
     /**
-     * 处理错误信息
+     * 处理错误信息.
      *
      * @param string $error
+     *
      * @return string
      */
     public function handleErrorMsg(string $error): string
@@ -109,12 +110,12 @@ trait Tien
         if (!$this->validateMsgParam) {
             $this->getValidateMsg();
         }
+
         return $this->validate->handleErrorMsg($error, $this->validateMsgParam);
     }
 
-
     /**
-     * 验证是否是开发环境
+     * 验证是否是开发环境.
      *
      * @return bool
      */
@@ -123,9 +124,8 @@ trait Tien
         return \think\facade\Env::get('app_debug');
     }
 
-
     /**
-     * 获取请求路径
+     * 获取请求路径.
      */
     protected function getPath()
     {
@@ -135,13 +135,12 @@ trait Tien
     }
 
     /**
-     * 获得操作的方法
+     * 获得操作的方法.
      */
     protected function getAction()
     {
         $this->action = substr($this->path, strrpos($this->path, '/') + 1);
     }
-
 
     /**
      * 获得验证对象
@@ -151,6 +150,7 @@ trait Tien
     protected function getValidate()
     {
         $class = 'app\\'.$this->request->module().'\\validate\\'.$this->request->controller();
+
         try {
             $this->validate = new $class();
         } catch (\Exception $e) {
@@ -158,9 +158,8 @@ trait Tien
         }
     }
 
-
     /**
-     * 获取api需要的参数
+     * 获取api需要的参数.
      */
     protected function getApiParam()
     {
@@ -169,9 +168,8 @@ trait Tien
         $this->apiParam = array_merge($this->validate->{$paramName} ?? [], $specialApiParam);
     }
 
-
     /**
-     * 获得验证提示信息
+     * 获得验证提示信息.
      */
     protected function getValidateMsg()
     {
@@ -180,9 +178,4 @@ trait Tien
             $this->validateMsgParam[$key] = current($msg);
         }
     }
-
-
-
-
-
 }

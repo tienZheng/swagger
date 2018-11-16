@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tien\Swagger;
-
 
 use Tien\Swagger\exceptions\FileException;
 use Tien\Swagger\exceptions\InvalidArgumentException;
@@ -10,115 +8,112 @@ use Tien\Swagger\exceptions\InvalidArgumentException;
 class HandleMethod extends Handle
 {
     /**
-     * 路径
+     * 路径.
      *
      * @var string
      */
     protected $path;
 
     /**
-     * 简介
+     * 简介.
      *
      * @var string
      */
     protected $summary;
 
     /**
-     * 说明
+     * 说明.
      *
      * @var string
      */
     protected $description;
 
     /**
-     * 方法请求方式
+     * 方法请求方式.
      *
      * @var array
      */
     protected $methodParam = [
         'post' => 'formData',
-        'get'  => 'query',
+        'get' => 'query',
     ];
 
-
     /**
-     * 请求方法
+     * 请求方法.
      *
      * @var string
      */
     protected $method = 'get';
 
     /**
-     * 请求标签名
+     * 请求标签名.
      *
      * @var string
      */
     protected $tagName;
 
     /**
-     * 请求方法名
+     * 请求方法名.
      *
      * @var string
      */
     protected $methodName;
 
     /**
-     * 连接符
+     * 连接符.
      *
      * @var string
      */
     protected $glue = ' * ';
 
     /**
-     * 二级链接符
+     * 二级链接符.
      *
      * @var string
      */
     protected $secGlue = "\t\t";
 
     /**
-     * 制表符
+     * 制表符.
      *
      * @var string
      */
     protected $tabs = "\t";
 
     /**
-     * 注释开始字符串
+     * 注释开始字符串.
      *
      * @var string
      */
     protected $notesStart = '/**';
 
     /**
-     * 注释结束字符串
+     * 注释结束字符串.
      *
      * @var string
      */
     protected $notesEnd = '*/';
 
     /**
-     * 换行符
+     * 换行符.
      *
      * @var string
      */
     protected $rowEnd = '",'.PHP_EOL;
 
-
     /**
-     * 操作方法
+     * 操作方法.
      *
      * @var string
      */
     protected $operationId;
 
     /**
-     * swagger方法固定开头
+     * swagger方法固定开头.
      *
      * @var string
      */
     protected $swaggerMethod;
-
 
     /**
      * @var string
@@ -129,8 +124,9 @@ class HandleMethod extends Handle
      * HandleMethod constructor.
      *
      * @param string $filePath
-     * @param bool $isCreate
+     * @param bool   $isCreate
      * @param string $path
+     *
      * @throws InvalidArgumentException
      * @throws exceptions\FileException
      */
@@ -139,9 +135,9 @@ class HandleMethod extends Handle
         $this->filePath = $filePath;
         $this->isCreate = $isCreate;
         if (!$isCreate) {
-            return ;
+            return;
         }
-        
+
         $this->path = $path;
         $this->getTagName();
         $this->filename = $filePath.$this->tagName.'.php';
@@ -153,9 +149,8 @@ class HandleMethod extends Handle
         $this->getFileContent();
     }
 
-
     /**
-     *获取标签名
+     *获取标签名.
      *
      * @throws InvalidArgumentException
      */
@@ -168,7 +163,8 @@ class HandleMethod extends Handle
     }
 
     /**
-     * 获取操作方法
+     * 获取操作方法.
+     *
      * @throws InvalidArgumentException
      */
     protected function getOperationId()
@@ -187,6 +183,7 @@ class HandleMethod extends Handle
     public function get()
     {
         $this->method = 'get';
+
         return $this;
     }
 
@@ -198,35 +195,41 @@ class HandleMethod extends Handle
     public function post()
     {
         $this->method = 'post';
+
         return $this;
     }
 
     /**
-     * 总结
+     * 总结.
+     *
      * @param string $summary
+     *
      * @return $this
      */
     public function summary(string $summary)
     {
         $this->summary = $summary;
+
         return $this;
     }
 
     /**
-     * 详细说明
+     * 详细说明.
      *
      * @param string $description
+     *
      * @return $this
      */
     public function description(string $description)
     {
         $this->description = $description;
+
         return $this;
     }
 
     /**
-     *
      * @param array $param ['sceneId' => ['integer', '渠道id', true]]
+     *
      * @return string
      */
     protected function formatContent(array $param): string
@@ -236,6 +239,7 @@ class HandleMethod extends Handle
         $type = $this->getType($param);
         $description = $param[$key][1] ?? $key;
         $required = ($param[$key][2] ?? '') == true ? 'true' : 'false';
+
         return "{$this->glue}{$this->tabs}".Config::$parameter.'('.PHP_EOL.
             $this->glue.$this->secGlue.'name="'.$key.$this->rowEnd.
             $this->glue.$this->secGlue.'in="'.$methodParam.$this->rowEnd.
@@ -245,11 +249,11 @@ class HandleMethod extends Handle
             "{$this->glue}{$this->tabs}),";
     }
 
-
     /**
-     * 新建注释
+     * 新建注释.
      *
      * @return bool|int
+     *
      * @throws FileException
      */
     public function create()
@@ -277,14 +281,15 @@ class HandleMethod extends Handle
         if (!$this->writeFile()) {
             throw new FileException('写入文件失败');
         }
+
         return true;
     }
 
-
     /**
-     * 更新
+     * 更新.
      *
      * @return bool|int
+     *
      * @throws FileException
      */
     public function update()
@@ -307,12 +312,13 @@ class HandleMethod extends Handle
         if (!$this->writeFile()) {
             throw new FileException('写入文件失败');
         }
+
         return true;
     }
 
-
     /**
-     * 完成一条完整的注释
+     * 完成一条完整的注释.
+     *
      * @return string
      */
     private function formatNotes()
@@ -340,30 +346,34 @@ class HandleMethod extends Handle
             $this->glue.$this->tabs.'),'.PHP_EOL;
         //拼接notes尾部
         $notes .= $this->glue.')'.PHP_EOL.' '.$this->notesEnd.PHP_EOL;
+
         return $notes;
     }
 
     /**
-     * 获得参数的类型
+     * 获得参数的类型.
      *
      * @param array $param ['sceneId' => ['integer','渠道id']]
+     *
      * @return string
      */
     private function getType(array $param): string
     {
         $type = 'string';
         $key = current(array_keys($param));
+
         return $param[$key][0] ?? $type;
     }
 
     /**
-     * 确定swagger请求方法
+     * 确定swagger请求方法.
      */
     private function getSwaggerMethod()
     {
-        if (strtolower($this->method) == 'get') {
+        if ('get' == strtolower($this->method)) {
             $this->swaggerMethod = Config::$methodGet;
-            return ;
+
+            return;
         }
         $this->swaggerMethod = Config::$methodPost;
     }

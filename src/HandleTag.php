@@ -2,25 +2,24 @@
 
 namespace Tien\Swagger;
 
-
 use Tien\Swagger\exceptions\FileException;
 
 class HandleTag extends Handle
 {
-
     /**
      * HandleTag constructor.
      *
      * @param string $filePath
-     * @param bool $isCreate
+     * @param bool   $isCreate
      * @param string $filename
+     *
      * @throws FileException
      */
     public function __construct(string $filePath, $isCreate = true, $filename = 'Tag.php')
     {
         $this->isCreate = $isCreate;
         if (!$isCreate) {
-            return ;
+            return;
         }
         $this->filePath = $filePath;
         $this->filename = $filePath.$filename;
@@ -30,29 +29,26 @@ class HandleTag extends Handle
         $this->getFileContent();
     }
 
-
     /**
-     * 格式化tag内容
+     * 格式化tag内容.
      *
      * @param array $param
+     *
      * @return string
      */
     protected function formatContent(array $param): string
     {
         $tagName = ucfirst(current(array_keys($param)));
         $description = current(array_values($param));
-        return $this->notesStart.PHP_EOL.' * '.Config::$tag.'('.PHP_EOL." *\t   name=\"".$tagName.'",'.PHP_EOL." *\t   description=\"".$description.'",'.PHP_EOL.' *  ),'.PHP_EOL.$this->notesEnd.PHP_EOL;
 
+        return $this->notesStart.PHP_EOL.' * '.Config::$tag.'('.PHP_EOL." *\t   name=\"".$tagName.'",'.PHP_EOL." *\t   description=\"".$description.'",'.PHP_EOL.' *  ),'.PHP_EOL.$this->notesEnd.PHP_EOL;
     }
 
-
-
-
-
     /**
-     * 创建标签
+     * 创建标签.
      *
      * @throws FileException
+     *
      * @return bool
      */
     public function create(): bool
@@ -67,7 +63,7 @@ class HandleTag extends Handle
 
             //如果存在且没有强制更新
             if ($this->isExists && !$this->isForced) {
-                continue ;
+                continue;
             }
 
             //如果存在，删除
@@ -82,15 +78,15 @@ class HandleTag extends Handle
         if (!$this->writeFile()) {
             throw new FileException('写入文件失败');
         }
+
         return true;
     }
 
-
-
     /**
-     * 更新标签
+     * 更新标签.
      *
      * @return bool
+     *
      * @throws FileException
      */
     public function update(): bool
@@ -117,8 +113,7 @@ class HandleTag extends Handle
         if (!$this->writeFile()) {
             throw new FileException('写入文件失败');
         }
+
         return true;
     }
-
-
 }
