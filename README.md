@@ -12,7 +12,7 @@ $ composer require tien/swagger --dev
 ## Usage
 
 ### 该扩展仅支持 ThinkPhp5 框架使用。目前只提供了生成两种注释，一个是方法体的注释，另外一个是标签（Tag）的注释；而方法体只支持 GET 和 POST 两个请求方式。 
-### 注意：只能在调试环境下使用，正式环境不会生效。而支持 swagger-php 的版本为 2.0 以上， 3.0 以下.
+### 注意：只能在调试环境下使用，正式环境不会生效。而支持 swagger-php 的版本为 2.0 以上， 3.0 以下。支持 PHP7 及以上版本。
 ### 默认注释生成的文件在 'application/swagger/'下
 ## 需要将安装包 ui 文件下的 dist 目录移动到 public 目录下
 
