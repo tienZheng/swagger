@@ -3,52 +3,49 @@
  * Created by PhpStorm.
  * User: Tien
  * Date: 2018/11/14
- * Time: 10:00 PM
+ * Time: 10:00 PM.
  */
 
 namespace Tien\Swagger;
 
-
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Tien\Swagger\exceptions\FileException;
 
 abstract class Handle
 {
     /**
-     * 文件存放的路径
+     * 文件存放的路径.
      *
      * @var string
      */
     protected $filePath;
 
     /**
-     * 文件名
+     * 文件名.
      *
      * @var string
      */
     protected $filename;
 
     /**
-     * 是否已存在
+     * 是否已存在.
      *
      * @var bool
      */
     protected $isExists;
 
     /**
-     * 是否强制生成
+     * 是否强制生成.
      *
      * @var bool
      */
     protected $isForced;
 
     /**
-     * 内容
+     * 内容.
      *
      * @var array
      */
     protected $content;
-
 
     /**
      * 文件内容　
@@ -58,29 +55,28 @@ abstract class Handle
     protected $fileContents;
 
     /**
-     * 注释开始字符串
+     * 注释开始字符串.
      *
      * @var string
      */
     protected $notesStart = '/**';
 
     /**
-     * 注释结束字符串
+     * 注释结束字符串.
      *
      * @var string
      */
     protected $notesEnd = '*/';
 
     /**
-     * 是否创建
+     * 是否创建.
      *
      * @var bool
      */
     protected $isCreate;
 
-
     /**
-     * 创建内容
+     * 创建内容.
      *
      * @return bool|int
      */
@@ -94,70 +90,74 @@ abstract class Handle
     abstract public function update();
 
     /**
-     * 删除内容
+     * 删除内容.
      *
      * @param string $name
+     *
      * @return mixed
      */
     public function delete(string $name)
     {
-        $tagNameIndex       = strpos($this->fileContents, $name);
-        $tagStartIndex      = strrpos(substr($this->fileContents, 0, $tagNameIndex), $this->notesStart);
-        $tagEndIndex        = strpos($this->fileContents, $this->notesEnd, $tagNameIndex);
-        $deleteLength       = $tagEndIndex + strlen($this->notesEnd) - $tagStartIndex;
+        $tagNameIndex = strpos($this->fileContents, $name);
+        $tagStartIndex = strrpos(substr($this->fileContents, 0, $tagNameIndex), $this->notesStart);
+        $tagEndIndex = strpos($this->fileContents, $this->notesEnd, $tagNameIndex);
+        $deleteLength = $tagEndIndex + strlen($this->notesEnd) - $tagStartIndex;
         $this->fileContents = substr_replace($this->fileContents, '', $tagStartIndex, $deleteLength);
+
         return $this;
     }
 
     /**
-     * 格式化内容
+     * 格式化内容.
      *
      * @param array $param
+     *
      * @return string
      */
-    abstract protected function formatContent(array $param): string ;
-
+    abstract protected function formatContent(array $param): string;
 
     /**
-     * 设置内容
+     * 设置内容.
      *
      * @param array $content
+     *
      * @return $this
      */
     public function setContent(array $content)
     {
         $this->content = $content;
+
         return $this;
     }
 
-
     /**
-     * 是否强制刷新
+     * 是否强制刷新.
      *
      * @return $this
      */
     public function isForced()
     {
         $this->isForced = true;
+
         return $this;
     }
 
     /**
-     * 是否创建
+     * 是否创建.
      *
      * @param bool $isCreate
+     *
      * @return $this
      */
     public function isCreate($isCreate = true)
     {
         $this->isCreate = $isCreate;
+
         return $this;
     }
 
-
-
     /**
-     * 读取文章内容
+     * 读取文章内容.
      */
     protected function getFileContent()
     {
@@ -165,7 +165,7 @@ abstract class Handle
     }
 
     /**
-     * 写文章
+     * 写文章.
      *
      * @return bool|int
      */
@@ -175,7 +175,7 @@ abstract class Handle
     }
 
     /**
-     * 写入内容
+     * 写入内容.
      *
      * @param string $content
      */
@@ -195,7 +195,7 @@ abstract class Handle
     }
 
     /**
-     * 创建文件夹
+     * 创建文件夹.
      */
     protected function crateFilePath()
     {
@@ -206,7 +206,7 @@ abstract class Handle
     }
 
     /**
-     * 创建文件
+     * 创建文件.
      */
     protected function createFile()
     {
@@ -216,25 +216,21 @@ abstract class Handle
     }
 
     /**
-     * 验证是否存在
+     * 验证是否存在.
      *
      * @param string $name
+     *
      * @return $this
      */
     protected function verifyIsExists(string $name)
     {
         $fileContent = file_get_contents($this->filename);
-        if (strpos($fileContent, '"'.$name.'"') !== false) {
+        if (false !== strpos($fileContent, '"'.$name.'"')) {
             $this->isExists = true;
         } else {
             $this->isExists = false;
         }
+
         return $this;
     }
-
-
-
-
-
-
 }
