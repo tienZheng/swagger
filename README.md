@@ -34,7 +34,7 @@ $ composer require tien/swagger --dev
 			//1、直接创建, 默认 get 请求
 			$this->tienMethod()->create();
 			
-			//1.1 若需要 post 请求
+			//1.1 若是 post 请求
 			$this->tienMethod()->post()->create();
 			
 			//2、加入方法的简介及详细说明
@@ -62,7 +62,7 @@ $ composer require tien/swagger --dev
 		];
 	
 		//这个是验证参数
-		protected $testMethod = [
+		protected $rule = [
 			'id'    => 'require|integer|gt:0',
         	'name'  => 'require|min:2|max:15',
         	'sex'   => 'in:1,2'
@@ -117,8 +117,27 @@ $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagg
 ![avatar](./ui/image/tmp_2.png)
 
 
-### 在验证类的 $testMethodMsg 还可以用于
-
+### 在验证类的 $testMethodMsg 其实还可以用于错误信息的友好提示
+#### 首先需要在验证类引入 TienValidate， 如下所示：
+	class Index extends Validate
+	{
+		//引入 TienValidate
+		use TienValidate;
+	}
+#### 然后在控制器中直接使用
+	public function testMethod()
+	{
+		//先生成api文档，然后再验证
+		$this->tienMethod()->create();
+		
+		//验证
+		$param = $this->request->param();
+       if (!$this->validate->check($param)) {
+           var_dump($this->handleErrorMsg($this->validate->getError())); //比如 id(标识符)必须大于0
+           var_dump($this->validate->getError()); // id必须大于0
+       }
+		
+	}
 ## Contributing
 
 You can contribute in one of three ways:
@@ -130,7 +149,7 @@ You can contribute in one of three ways:
 _The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and PSR-2 coding guidelines._
 
 ## Another
-_该Demo只是为了学习，若有侵权或不妥之处，请联系 913346548@qq.com, 我会及时处理，谢谢！_
+_该 Demo 只是为了学习，若有侵权或不妥之处，请联系 913346548@qq.com, 我会及时处理，谢谢！_
 
 ## License
 

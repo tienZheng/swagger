@@ -109,7 +109,6 @@ trait Tien
         if (!$this->validateMsgParam) {
             $this->getValidateMsg();
         }
-
         return $this->validate->handleErrorMsg($error, $this->validateMsgParam);
     }
 
