@@ -12,24 +12,25 @@ namespace Tien\Swagger\traits;
 trait TienValidate
 {
 
+
     /**
      * 替换错误信息，汉化
      *
-     * @param $param
-     * @param $error
-     * @param array $msgArr 中文提示语数组['sceneId' => '渠道id']
+     * @param string $error
+     * @param array $msgArr
      * @return string
      */
-    public function handleErrorMsg($param, $error, $msgArr = []): string
+    public function handleErrorMsg(string $error, array $msgArr = []): string
     {
-        if (empty($param) || !is_array($param)) {
+        if (empty($msgArr)) {
             return $error;
         }
-        foreach ($param as $key => $val) {
+        foreach ($msgArr as $key => $value) {
             if (strpos($error, $key) !== false && isset($msgArr[$key])) {
                 return str_replace($key, $key."({$msgArr[$key]})", $error);
             }
         }
         return $error;
     }
+
 }

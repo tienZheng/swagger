@@ -98,8 +98,20 @@ trait Tien
         return new HandleTag($this->filePath, $isDev);
     }
 
+    /**
+     * 处理错误信息
+     *
+     * @param string $error
+     * @return string
+     */
+    public function handleErrorMsg(string $error): string
+    {
+        if (!$this->validateMsgParam) {
+            $this->getValidateMsg();
+        }
 
-
+        return $this->validate->handleErrorMsg($error, $this->validateMsgParam);
+    }
 
 
     /**

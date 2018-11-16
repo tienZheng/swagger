@@ -116,6 +116,9 @@ $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagg
 ![avatar](./ui/image/tmp_1.png)
 ![avatar](./ui/image/tmp_2.png)
 
+
+### 在验证类的 $testMethodMsg 还可以用于
+
 ## Contributing
 
 You can contribute in one of three ways:
