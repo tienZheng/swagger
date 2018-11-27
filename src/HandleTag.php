@@ -116,8 +116,4 @@ class HandleTag extends Handle
 
         return true;
     }
-
-
-
-
 }
