@@ -10,6 +10,7 @@ namespace Tien\Swagger\traits;
 
 use Tien\Swagger\exceptions\Exception;
 use Tien\Swagger\HandleMethod;
+use Tien\Swagger\HandleSummary;
 use Tien\Swagger\HandleTag;
 
 trait Tien
@@ -46,6 +47,8 @@ trait Tien
 
     protected $filePath = '';
 
+    protected $isDev = false;
+
     /**
      * 创建方法.
      *
@@ -57,6 +60,14 @@ trait Tien
      */
     public function tienMethod()
     {
+        $handleMethod = new HandleMethod($this->filePath, $this->path, $this->isDev);
+        $handleMethod->setContent($this->apiParam);
+
+        return $handleMethod;
+    }
+
+    public function tienInit()
+    {
         $this->getFilePath();
         $this->getPath();
         $this->getAction();
@@ -67,12 +78,7 @@ trait Tien
         //获取 api 文档参数
         $this->getApiParam();
 
-        $isDev = $this->verifyIsDev();
-
-        $handleMethod = new HandleMethod($this->filePath, $this->path, $isDev);
-        $handleMethod->setContent($this->apiParam);
-
-        return $handleMethod;
+        $this->isDev = $this->verifyIsDev();
     }
 
     /**
@@ -92,10 +98,17 @@ trait Tien
      */
     public function tienTag()
     {
-        $this->getFilePath();
-        $isDev = $this->verifyIsDev();
+        return new HandleTag($this->filePath, $this->isDev);
+    }
 
-        return new HandleTag($this->filePath, $isDev);
+    /**
+     * 文档说明
+     *
+     * @return HandleSummary
+     */
+    public function tienSummary()
+    {
+        return new HandleSummary($this->filePath, $this->isDev);
     }
 
     /**

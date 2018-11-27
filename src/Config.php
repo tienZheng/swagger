@@ -25,6 +25,18 @@ class Config
      */
     public static $methodPost = '@SWG\Post';
 
+
+    /**
+     * @var string
+     */
+    public static $methodPut = '@SWG\Put';
+
+    /**
+     * @var string
+     */
+    public static $methodDelete = '@SWG\Delete';
+
+
     /**
      * 成员变量.
      *
@@ -45,4 +57,12 @@ class Config
      * @var string
      */
     public static $response = '@SWG\Response';
+
+
+    /**
+     * info
+     *
+     * @var string
+     */
+    public static $info = '@SWG\Info';
 }

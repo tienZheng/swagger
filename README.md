@@ -28,6 +28,11 @@ $ composer require tien/swagger --dev
 		//一定要引入Tien
 		use Tien;
 		
+		public function __construct()
+		{
+			$this->tienInit();
+		}
+		
 		//测试生成方法体注释
 		public function testMethod()
 		{
@@ -62,7 +67,7 @@ $ composer require tien/swagger --dev
 		];
 	
 		//这个是验证参数
-		protected $rule = [
+		public $testMethod = [
 			'id'    => 'require|integer|gt:0',
         	'name'  => 'require|min:2|max:15',
         	'sex'   => 'in:1,2'
@@ -79,6 +84,11 @@ $ composer require tien/swagger --dev
 			'id'    => ['integer', '标识符', true],
         	'name'  => ['string', '姓名', true],
         	'sex'   => ['string', '性别, 1-男，2-女']
+		];
+		
+		public $testMethodText = [
+			'summary' => 'summary',
+			'description' => '*******',
 		];
 	}
 	
@@ -105,6 +115,26 @@ $ composer require tien/swagger --dev
 			//3、更新
 			$this->tienTag()->setContent($tagParam)->update();
 		}
+	}
+	
+### 生成 api 文档说明
+	public function testSummary()
+    {
+        echo $this->tienSummary()->host('127.0.0.1:8000')->version('V0.1')
+            ->title("test's system")->description('hello world test system')
+            ->create();
+    }
+
+### 在中间件中使用，生成注释
+	class TestTienMiddleware
+	{
+    	use TienMiddleware;
+
+    	public function handle($request, \Closure $next)
+    	{
+        	$this->tienHandle($request);
+        	return $next($request);
+    	}
 	}
 
 ### 最后在项目的根目录下运行：

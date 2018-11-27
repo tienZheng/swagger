@@ -59,7 +59,7 @@ abstract class Handle
      *
      * @var string
      */
-    protected $notesStart = '/**';
+    protected $notesStart = PHP_EOL.'/**';
 
     /**
      * 注释结束字符串.
@@ -211,7 +211,7 @@ abstract class Handle
     protected function createFile()
     {
         if (!file_exists($this->filename)) {
-            file_put_contents($this->filename, '<?php'.PHP_EOL);
+            file_put_contents($this->filename, '<?php');
         }
     }
 

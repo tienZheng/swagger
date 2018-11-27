@@ -85,7 +85,7 @@ class HandleMethod extends Handle
      *
      * @var string
      */
-    protected $notesStart = '/**';
+    protected $notesStart = PHP_EOL.'/**';
 
     /**
      * 注释结束字符串.
@@ -195,6 +195,20 @@ class HandleMethod extends Handle
     public function post()
     {
         $this->method = 'post';
+
+        return $this;
+    }
+
+    public function put()
+    {
+        $this->method = 'put';
+
+        return $this;
+    }
+
+    public function methodDelete()
+    {
+        $this->method = 'delete';
 
         return $this;
     }

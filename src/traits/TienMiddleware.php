@@ -21,19 +21,18 @@ trait TienMiddleware
      *
      *
      * @param $request
-     * @param \Closure $next
      * @return mixed
      * @throws \Tien\Swagger\exceptions\Exception
      * @throws \Tien\Swagger\exceptions\FileException
      * @throws \Tien\Swagger\exceptions\InvalidArgumentException
      */
-    public function handle($request, \Closure $next)
+    public function tienHandle($request)
     {
         $this->request = $request;
 
         //是否是开发环境, 不是开发环境，结束操作
         if (!$this->verifyIsDev()) {
-            return $next($request);
+            return true;
         }
 
         $this->getFilePath();
@@ -49,17 +48,19 @@ trait TienMiddleware
         $apiTextName = $this->action.'Text';
         $apiText = $this->validate->{$apiTextName};
         $method = strtolower($request->method());
-
         $handleMethod = new HandleMethod($this->filePath, $this->path);
         $handleMethod->setContent($this->apiParam);
         if ($method == 'post') {
             $handleMethod->post();
         } elseif ($method == 'get') {
             $handleMethod->get();
+        } elseif ($method == 'put') {
+            $handleMethod->put();
+        } elseif ($method == 'delete') {
+            $handleMethod->methodDelete();
         }
         $handleMethod->summary($apiText['summary'] ?? '');
         $handleMethod->description($apiText['description'] ?? $apiText['summary'] ?? '');
-        $handleMethod->create();
-        return $next($request);
+        return $handleMethod->create();
     }
 }
