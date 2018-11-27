@@ -81,10 +81,9 @@ trait Tien
         $this->isDev = $this->verifyIsDev();
     }
 
-
     protected function getFilePath($filePath = '')
     {
-        $this->filePath = $filePath ? : \think\facade\Env::get('APP_PATH').'swagger'.DIRECTORY_SEPARATOR;
+        $this->filePath = $filePath ?: \think\facade\Env::get('APP_PATH').'swagger'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -100,7 +99,7 @@ trait Tien
     }
 
     /**
-     * 文档说明
+     * 文档说明.
      *
      * @return HandleSummary
      */
