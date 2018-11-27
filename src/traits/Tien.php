@@ -102,7 +102,7 @@ trait Tien
     }
 
     /**
-     * 文档说明
+     * 文档说明.
      *
      * @return HandleSummary
      */

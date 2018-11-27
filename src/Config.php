@@ -25,7 +25,6 @@ class Config
      */
     public static $methodPost = '@SWG\Post';
 
-
     /**
      * @var string
      */
@@ -35,7 +34,6 @@ class Config
      * @var string
      */
     public static $methodDelete = '@SWG\Delete';
-
 
     /**
      * 成员变量.
@@ -58,9 +56,8 @@ class Config
      */
     public static $response = '@SWG\Response';
 
-
     /**
-     * info
+     * info.
      *
      * @var string
      */
