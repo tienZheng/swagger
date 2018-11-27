@@ -66,9 +66,9 @@ trait Tien
         return $handleMethod;
     }
 
-    public function tienInit()
+    public function tienInit($filePath = '')
     {
-        $this->getFilePath();
+        $this->getFilePath($filePath);
         $this->getPath();
         $this->getAction();
 
@@ -81,12 +81,10 @@ trait Tien
         $this->isDev = $this->verifyIsDev();
     }
 
-    /**
-     * 设置文件路径.
-     */
-    protected function getFilePath()
+
+    protected function getFilePath($filePath = '')
     {
-        $this->filePath = \think\facade\Env::get('APP_PATH').'swagger'.DIRECTORY_SEPARATOR;
+        $this->filePath = $filePath ? : \think\facade\Env::get('APP_PATH').'swagger'.DIRECTORY_SEPARATOR;
     }
 
     /**

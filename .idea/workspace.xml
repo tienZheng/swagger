@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3743b27d-2dc7-4bca-8695-cc6adff75409" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/traits/TienValidate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/traits/TienValidate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/traits/Tien.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/traits/Tien.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/traits/TienMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/traits/TienMiddleware.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,14 +47,14 @@
           <entry key="dummy" value="6" />
           <entry key="html" value="13" />
           <entry key="json" value="23" />
-          <entry key="php" value="9590" />
+          <entry key="php" value="9674" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="13" />
           <entry key="JSON" value="23" />
-          <entry key="PHP" value="9590" />
+          <entry key="PHP" value="9674" />
           <entry key="PLAIN_TEXT" value="6" />
         </counts>
       </usages-collector>
@@ -71,17 +71,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traits/TienMiddleware.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+            <state relative-caret-position="20">
+              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/traits/Tien.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2699">
-              <caret line="108" column="31" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
+            <state relative-caret-position="213">
+              <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -113,10 +113,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traits/TienValidate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
+            <state relative-caret-position="620">
               <caret line="78" column="25" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
             </state>
           </provider>
@@ -167,13 +167,13 @@
         <option value="$PROJECT_DIR$/src/triats/TienValidate.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/HandleMethod.php" />
-        <option value="$PROJECT_DIR$/src/traits/TienMiddleware.php" />
         <option value="$PROJECT_DIR$/src/HandleTag.php" />
         <option value="$PROJECT_DIR$/src/Config.php" />
         <option value="$PROJECT_DIR$/src/Handle.php" />
-        <option value="$PROJECT_DIR$/src/traits/Tien.php" />
         <option value="$PROJECT_DIR$/src/HandleSummary.php" />
         <option value="$PROJECT_DIR$/src/traits/TienValidate.php" />
+        <option value="$PROJECT_DIR$/src/traits/TienMiddleware.php" />
+        <option value="$PROJECT_DIR$/src/traits/Tien.php" />
       </list>
     </option>
   </component>
@@ -310,7 +310,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51213000" />
+    <option name="totallyTimeSpent" value="51582000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -426,13 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/traits/Tien.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2699">
-          <caret line="108" column="31" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Handle.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1164">
@@ -447,17 +440,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/traits/TienMiddleware.php">
+    <entry file="file://$PROJECT_DIR$/src/traits/TienValidate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+        <state relative-caret-position="620">
+          <caret line="78" column="25" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/traits/TienValidate.php">
+    <entry file="file://$PROJECT_DIR$/src/traits/TienMiddleware.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="78" column="25" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
+        <state relative-caret-position="20">
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/traits/Tien.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
         </state>
       </provider>
     </entry>

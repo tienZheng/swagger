@@ -21,12 +21,13 @@ trait TienMiddleware
      *
      *
      * @param $request
+     * @param $filePath
      * @return mixed
      * @throws \Tien\Swagger\exceptions\Exception
      * @throws \Tien\Swagger\exceptions\FileException
      * @throws \Tien\Swagger\exceptions\InvalidArgumentException
      */
-    public function tienHandle($request)
+    public function tienHandle($request, $filePath = '')
     {
         $this->request = $request;
 
@@ -35,7 +36,7 @@ trait TienMiddleware
             return true;
         }
 
-        $this->getFilePath();
+        $this->getFilePath($filePath);
         $this->getPath();
         $this->getAction();
 
