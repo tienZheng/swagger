@@ -75,7 +75,7 @@ class HandleSummary extends Handle
             " *\t   ".Config::$info."(".PHP_EOL.
             " *\t     version=\"$this->version\",".PHP_EOL.
             " *\t     title=\"$this->title\",".PHP_EOL.
-            " *\t     description=\"$this->title\"".PHP_EOL.
+            " *\t     description=\"$this->description\"".PHP_EOL.
             " *\t),".PHP_EOL.
             " * )".PHP_EOL.
             ' '.$this->notesEnd;
