@@ -14,6 +14,8 @@ trait TienValidate
 
     protected $errorMsg;
 
+    protected $specialKeys = ['tienAppend'];
+
     /**
      * 替换错误信息，汉化.
      *
@@ -73,6 +75,9 @@ trait TienValidate
         $keys = array_keys($param);
         $verifyKeys = array_keys($verifyInfo);
         foreach ($keys as $key) {
+            if (in_array($key, $this->specialKeys)) {
+                continue;
+            }
             if (!in_array($key, $verifyKeys)) {
                 return $key.'传参非法';
             }
