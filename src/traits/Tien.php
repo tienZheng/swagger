@@ -141,7 +141,7 @@ trait Tien
     protected function getPath()
     {
         if (!$this->path) {
-            $this->path = $this->request->path();
+            $this->path = $this->request->routeInfo()['rule'];
         }
     }
 
@@ -150,7 +150,7 @@ trait Tien
      */
     protected function getAction()
     {
-        $this->action = substr($this->path, strrpos($this->path, '/') + 1);
+        $this->action = $this->request->action();
     }
 
     /**
@@ -161,7 +161,6 @@ trait Tien
     protected function getValidate()
     {
         $class = 'app\\'.$this->request->module().'\\validate\\'.$this->request->controller();
-
         try {
             $this->validate = new $class();
         } catch (\Exception $e) {

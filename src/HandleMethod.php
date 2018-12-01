@@ -36,6 +36,8 @@ class HandleMethod extends Handle
     protected $methodParam = [
         'post' => 'formData',
         'get' => 'query',
+        'put' => 'formData',
+        'delete' => 'query'
     ];
 
     /**
@@ -121,6 +123,12 @@ class HandleMethod extends Handle
     protected $Parameter = '';
 
     /**
+     * 是否是 path 格式
+     * @var array
+     */
+    protected $pathInfo = [];
+
+    /**
      * HandleMethod constructor.
      *
      * @param string $filePath
@@ -139,6 +147,7 @@ class HandleMethod extends Handle
         }
 
         $this->path = $path;
+        $this->getPathInfo();
         $this->getTagName();
         $this->filename = $filePath.$this->tagName.'.php';
         $this->crateFilePath();
@@ -148,6 +157,26 @@ class HandleMethod extends Handle
         $this->path = DIRECTORY_SEPARATOR.$this->path;
         $this->getFileContent();
     }
+
+    /**
+     * 获取路径信息
+     */
+    protected function getPathInfo()
+    {
+        if (($index = strpos($this->path, '<')) !== false) {
+            if (($end = strpos($this->path, '>')) !== false) {
+                $pathKey = substr($this->path, $index + 1, $end - $index - 1);
+                $this->pathInfo = [
+                    true, $index, $end, $pathKey
+                ];
+                //<>替换成 {}
+                $this->path = substr_replace($this->path, '{', $index, 1);
+                $this->path = substr_replace($this->path, '}', $end, 1);
+            }
+        }
+    }
+
+
 
     /**
      *获取标签名.
@@ -169,7 +198,12 @@ class HandleMethod extends Handle
      */
     protected function getOperationId()
     {
-        $this->operationId = substr($this->path, strrpos($this->path, DIRECTORY_SEPARATOR) + 1);
+        if ($this->pathInfo[0] ?? false) {
+            $realPath = substr_replace($this->path, '', $this->pathInfo[1] - 1, $this->pathInfo[2] - $this->pathInfo[1] + 2);
+        } else {
+            $realPath = $this->path;
+        }
+        $this->operationId = substr($realPath, strrpos($realPath, DIRECTORY_SEPARATOR) + 1);
         if (!$this->operationId) {
             throw new InvalidArgumentException('传参不符合要求');
         }
@@ -249,7 +283,7 @@ class HandleMethod extends Handle
     protected function formatContent(array $param): string
     {
         $key = current(array_keys($param));
-        $methodParam = $this->methodParam[strtolower($this->method)];
+        $methodParam = $this->getIn($key);
         $type = $this->getType($param);
         $description = $param[$key][1] ?? $key;
         $required = ($param[$key][2] ?? '') == true ? 'true' : 'false';
@@ -261,6 +295,22 @@ class HandleMethod extends Handle
             $this->glue.$this->secGlue.'required='.$required.','.PHP_EOL.
             $this->glue.$this->secGlue.'type="'.$type.$this->rowEnd.
             "{$this->glue}{$this->tabs}),";
+    }
+
+    /**
+     * 获取 in 的值
+     * @param string $key
+     * @param $method
+     * @return mixed|string
+     */
+    protected function getIn(string $key)
+    {
+        if ($this->pathInfo[3] ?? '') {
+            if ($key == $this->pathInfo[3]) {
+                return 'path';
+            }
+        }
+        return $this->methodParam[strtolower($this->method)];
     }
 
     /**
@@ -384,10 +434,21 @@ class HandleMethod extends Handle
      */
     private function getSwaggerMethod()
     {
-        if ('get' == strtolower($this->method)) {
-            $this->swaggerMethod = Config::$methodGet;
+        $method = strtolower($this->method);
+        switch ($method) {
+            case 'get':
+                $this->swaggerMethod = Config::$methodGet;
+                return;
+            case 'post':
+                $this->swaggerMethod = Config::$methodPost;
+                return;
+            case 'put':
+                $this->swaggerMethod = Config::$methodPut;
+                return;
+            case 'delete':
+                $this->swaggerMethod = Config::$methodDelete;
+                return;
 
-            return;
         }
         $this->swaggerMethod = Config::$methodPost;
     }
