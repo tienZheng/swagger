@@ -150,7 +150,7 @@ trait Tien
      */
     protected function getAction()
     {
-        $this->action = $this->request->action();
+        $this->action = $this->request->action(true);
     }
 
     /**
