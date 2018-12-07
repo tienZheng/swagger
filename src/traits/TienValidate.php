@@ -41,10 +41,11 @@ trait TienValidate
     /**
      *
      * @param $request
+     * @param array $checkData
      * @return bool
      * @throws \Tien\Swagger\exceptions\Exception
      */
-    public function tienCheck($request)
+    public function tienCheck($request, array $checkData = [])
     {
         $this->request = $request;
 
@@ -55,7 +56,8 @@ trait TienValidate
         $this->getValidate();
         $this->getApiParam();
         $validateParam = $this->validate->{$this->action} ?? [];
-        $verify = $this->validate->check($request->param(), $validateParam);
+        $checkData = empty($checkData) ? $request->param() : $checkData;
+        $verify = $this->validate->check($checkData, $validateParam);
         $this->getValidateMsg();
         if (!$verify) {
             $this->errorMsg =  $this->handleErrorMsg($this->validate->getError(), $this->validateMsgParam);
