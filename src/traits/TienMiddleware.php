@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tien
  * Date: 2018/11/26
- * Time: 2:52 PM
+ * Time: 2:52 PM.
  */
 
 namespace Tien\Swagger\traits;
-
 
 use Tien\Swagger\HandleMethod;
 
@@ -18,11 +17,11 @@ trait TienMiddleware
     protected $request;
 
     /**
-     *
-     *
      * @param $request
      * @param $filePath
+     *
      * @return mixed
+     *
      * @throws \Tien\Swagger\exceptions\Exception
      * @throws \Tien\Swagger\exceptions\FileException
      * @throws \Tien\Swagger\exceptions\InvalidArgumentException
@@ -51,17 +50,18 @@ trait TienMiddleware
         $method = strtolower($request->method());
         $handleMethod = new HandleMethod($this->filePath, $this->path);
         $handleMethod->setContent($this->apiParam);
-        if ($method == 'post') {
+        if ('post' == $method) {
             $handleMethod->post();
-        } elseif ($method == 'get') {
+        } elseif ('get' == $method) {
             $handleMethod->get();
-        } elseif ($method == 'put') {
+        } elseif ('put' == $method) {
             $handleMethod->put();
-        } elseif ($method == 'delete') {
+        } elseif ('delete' == $method) {
             $handleMethod->methodDelete();
         }
         $handleMethod->summary($apiText['summary'] ?? '');
         $handleMethod->description($apiText['description'] ?? $apiText['summary'] ?? '');
+
         return $handleMethod->create();
     }
 }

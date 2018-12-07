@@ -39,10 +39,11 @@ trait TienValidate
     }
 
     /**
-     *
      * @param $request
      * @param array $checkData
+     *
      * @return bool
+     *
      * @throws \Tien\Swagger\exceptions\Exception
      */
     public function tienCheck($request, array $checkData = [])
@@ -60,16 +61,18 @@ trait TienValidate
         $verify = $this->validate->check($checkData, $validateParam);
         $this->getValidateMsg();
         if (!$verify) {
-            $this->errorMsg =  $this->handleErrorMsg($this->validate->getError(), $this->validateMsgParam);
+            $this->errorMsg = $this->handleErrorMsg($this->validate->getError(), $this->validateMsgParam);
         }
+
         return $verify;
     }
 
-
     /**
-     * 验证传参的键是否合法，若是，返回true
+     * 验证传参的键是否合法，若是，返回true.
+     *
      * @param $param
      * @param $verifyInfo
+     *
      * @return bool|string
      */
     public function verifyKey($param, $verifyInfo)
@@ -84,6 +87,7 @@ trait TienValidate
                 return $key.'传参非法';
             }
         }
+
         return true;
     }
 }
