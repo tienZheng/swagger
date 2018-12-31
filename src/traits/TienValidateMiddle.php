@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tien
  * Date: 2018/12/29
- * Time: 11:28 PM
+ * Time: 11:28 PM.
  */
 
 namespace Tien\Swagger\traits;
-
 
 trait TienValidateMiddle
 {
@@ -16,11 +15,12 @@ trait TienValidateMiddle
     protected $errorMsg;
 
     /**
-     *
      * @param $request
      * @param array $checkData
-     * @param bool $isThrow
+     * @param bool  $isThrow
+     *
      * @return bool
+     *
      * @throws \Tien\Swagger\exceptions\Exception
      */
     public function tienCheck($request, array $checkData = [], bool $isThrow)
@@ -44,8 +44,9 @@ trait TienValidateMiddle
 
         //如果验证不通过
         if (!$verify) {
-            $this->errorMsg =  $this->handleError($this->validate->getError());
+            $this->errorMsg = $this->handleError($this->validate->getError());
         }
+
         return $verify;
     }
 }
