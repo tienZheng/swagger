@@ -17,6 +17,9 @@ trait Tien
 {
     protected $path;
 
+
+    protected $request;
+
     /**
      * 控制器调用的方法.
      *
@@ -66,25 +69,37 @@ trait Tien
         return $handleMethod;
     }
 
-    public function tienInit($filePath = '')
+    /**
+     * :初始化 tien
+     *
+     * @param string $filePath
+     * @param bool $isThrow
+     * @throws Exception
+     */
+    public function tienInit(string $filePath = '', bool $isThrow = true)
     {
         $this->getFilePath($filePath);
         $this->getPath();
         $this->getAction();
 
         //获取验证对象
-        $this->getValidate();
+        $this->getValidate($isThrow);
 
         //获取 api 文档参数
         $this->getApiParam();
 
+        //检验是否是测试环境
         $this->isDev = $this->verifyIsDev();
     }
 
-
-    protected function getFilePath($filePath = '')
+    /**
+     * :获取 swagger 写入的文件路径
+     *
+     * @param string $filePath
+     */
+    protected function getFilePath(string $filePath = '')
     {
-        $this->filePath = $filePath ? : \think\facade\Env::get('APP_PATH').'swagger'.DIRECTORY_SEPARATOR;
+        $this->filePath = $filePath ? : \think\facade\Env::get('APP_PATH'). 'swagger' . DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -116,12 +131,11 @@ trait Tien
      *
      * @return string
      */
-    public function handleErrorMsg(string $error): string
+    public function handleError(string $error): string
     {
         if (!$this->validateMsgParam) {
             $this->getValidateMsg();
         }
-
         return $this->validate->handleErrorMsg($error, $this->validateMsgParam);
     }
 
@@ -141,7 +155,7 @@ trait Tien
     protected function getPath()
     {
         if (!$this->path) {
-            $this->path = $this->request->routeInfo()['rule'];
+            $this->path = $this->request->routeInfo()['rule'] ?? $this->request->path();
         }
     }
 
@@ -158,14 +172,16 @@ trait Tien
      *
      * @throws Exception
      */
-    protected function getValidate()
+    protected function getValidate($isThrow = true)
     {
         $class = 'app\\'.$this->request->module().'\\validate\\'.$this->request->controller();
-        try {
+        if (class_exists($class)) {
             $this->validate = new $class();
-        } catch (\Exception $e) {
-            throw new Exception('验证类不存在');
+            return;
+        } elseif (!$isThrow) {
+            return;
         }
+        throw new Exception($class . '验证类不存在');
     }
 
     /**
@@ -175,7 +191,7 @@ trait Tien
     {
         $paramName = $this->action.'Msg';
         $specialApiParam = $this->validate->specialApiParam ?? [];
-        $this->apiParam = array_merge($this->validate->{$paramName} ?? [], $specialApiParam);
+        $this->apiParam = array_merge($specialApiParam, $this->validate->{$paramName} ?? []);
     }
 
     /**

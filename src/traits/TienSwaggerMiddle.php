@@ -11,46 +11,46 @@ namespace Tien\Swagger\traits;
 
 use Tien\Swagger\HandleMethod;
 
-trait TienMiddleware
+trait TienSwaggerMiddle
 {
     use Tien;
 
-    protected $request;
-
     /**
-     *
+     *: 生成 swagger 文档中间件处理 handle
      *
      * @param $request
-     * @param $filePath
+     * @param string $filePath
+     * @param bool $isThrow
      * @return mixed
      * @throws \Tien\Swagger\exceptions\Exception
      * @throws \Tien\Swagger\exceptions\FileException
      * @throws \Tien\Swagger\exceptions\InvalidArgumentException
      */
-    public function tienHandle($request, $filePath = '')
+    public function tienHandle($request, string $filePath = '', bool $isThrow = true)
     {
-        $this->request = $request;
-
         //是否是开发环境, 不是开发环境，结束操作
         if (!$this->verifyIsDev()) {
             return true;
         }
 
-        $this->getFilePath($filePath);
-        $this->getPath();
-        $this->getAction();
+        $this->request = $request;
+        
+        //初始化
+        $this->tienInit($filePath, $isThrow);
 
-        //获取到验证类
-        $this->getValidate();
+        //如果为空，表示当前类不需要生成文档和验证
+        if (!$this->validate) {
+            return true;
+        }
 
-        //获取到 api 信息
-        $this->getApiParam();
         //获取到 api 文本简介信息
-        $apiTextName = $this->action.'Text';
-        $apiText = $this->validate->{$apiTextName};
-        $method = strtolower($request->method());
-        $handleMethod = new HandleMethod($this->filePath, $this->path);
+        $apiTextName    = $this->action.'Text';
+        $apiText        = $this->validate->{$apiTextName};
+        $handleMethod   = new HandleMethod($this->filePath, $this->path);
         $handleMethod->setContent($this->apiParam);
+
+        //确定请求方法
+        $method = strtolower($request->method());
         if ($method == 'post') {
             $handleMethod->post();
         } elseif ($method == 'get') {
@@ -60,6 +60,8 @@ trait TienMiddleware
         } elseif ($method == 'delete') {
             $handleMethod->methodDelete();
         }
+
+        //生成解析文档
         $handleMethod->summary($apiText['summary'] ?? '');
         $handleMethod->description($apiText['description'] ?? $apiText['summary'] ?? '');
         return $handleMethod->create();
