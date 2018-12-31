@@ -17,7 +17,6 @@ trait Tien
 {
     protected $path;
 
-
     protected $request;
 
     /**
@@ -70,10 +69,11 @@ trait Tien
     }
 
     /**
-     * :初始化 tien
+     * :初始化 tien.
      *
      * @param string $filePath
-     * @param bool $isThrow
+     * @param bool   $isThrow
+     *
      * @throws Exception
      */
     public function tienInit(string $filePath = '', bool $isThrow = true)
@@ -93,13 +93,13 @@ trait Tien
     }
 
     /**
-     * :获取 swagger 写入的文件路径
+     * :获取 swagger 写入的文件路径.
      *
      * @param string $filePath
      */
     protected function getFilePath(string $filePath = '')
     {
-        $this->filePath = $filePath ? : \think\facade\Env::get('APP_PATH'). 'swagger' . DIRECTORY_SEPARATOR;
+        $this->filePath = $filePath ?: \think\facade\Env::get('APP_PATH').'swagger'.DIRECTORY_SEPARATOR;
     }
 
     /**
@@ -115,7 +115,7 @@ trait Tien
     }
 
     /**
-     * 文档说明
+     * 文档说明.
      *
      * @return HandleSummary
      */
@@ -136,6 +136,7 @@ trait Tien
         if (!$this->validateMsgParam) {
             $this->getValidateMsg();
         }
+
         return $this->validate->handleErrorMsg($error, $this->validateMsgParam);
     }
 
@@ -177,11 +178,13 @@ trait Tien
         $class = 'app\\'.$this->request->module().'\\validate\\'.$this->request->controller();
         if (class_exists($class)) {
             $this->validate = new $class();
+
             return;
         } elseif (!$isThrow) {
             return;
         }
-        throw new Exception($class . '验证类不存在');
+
+        throw new Exception($class.'验证类不存在');
     }
 
     /**

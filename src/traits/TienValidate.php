@@ -40,12 +40,12 @@ trait TienValidate
         return $error;
     }
 
-
     /**
-     * 验证传参的键是否合法，若是，返回true
+     * 验证传参的键是否合法，若是，返回true.
      *
      * @param array $param
      * @param array $verifyInfo
+     *
      * @return bool|string
      */
     public function verifyKey(array $param, array $verifyInfo)
@@ -60,15 +60,16 @@ trait TienValidate
                 return $key.'传参非法';
             }
         }
+
         return true;
     }
 
-
     /**
-     * :排序规则
+     * :排序规则.
      *
      * @param string $value
      * @param string $rule
+     *
      * @return bool|string
      */
     public function order(string $value, string $rule)
@@ -88,21 +89,21 @@ trait TienValidate
                 return "{$error}{$item[1]}应是asc或desc}";
             }
         }
+
         return true;
     }
 
     /**
-     * :禁止某些字段
+     * :禁止某些字段.
      *
      * @param string $value
      * @param string $rule
-     * @param array $data
+     * @param array  $data
+     *
      * @return string
      */
     public function forbidden(string $value, string $rule, array $data)
     {
-        return $value . '(' . array_flip($data)[$value]. '):该字段是禁止存在的';
+        return $value.'('.array_flip($data)[$value].'):该字段是禁止存在的';
     }
-
-
 }
