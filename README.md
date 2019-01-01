@@ -1,6 +1,6 @@
 <h1 align="center"> swagger </h1>
 
-<p align="center"> 专门为 ThinkPhp5 生成Api文档，基于 Swagger.</p>
+<p align="center"> 专门为 ThinkPhp5 生成Api文档，基于 Swagger-php 及 Swagger-ui.</p>
 
 ## Installing
 

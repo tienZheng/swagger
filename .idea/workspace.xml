@@ -2,30 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3743b27d-2dc7-4bca-8695-cc6adff75409" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/traits/TienTools.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/traits/TienValidateMiddle.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/image/createApiText.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/image/forbidden.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/image/summaryAndTags.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/image/validateOrder.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/image/validateParames.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/oauth2-redirect.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-standalone-preset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-standalone-preset.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/traits/Tien.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/traits/Tien.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/traits/TienMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/traits/TienSwaggerMiddle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/traits/TienValidate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/traits/TienValidate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/oauth2-redirect.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui-bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui-bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui-standalone-preset.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui-standalone-preset.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/dist/swagger-ui.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/image/tmp_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/image/tmp_2.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,16 +31,16 @@
     <session id="411619257">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="4" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.0" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="gitkeep" value="1" />
           <entry key="groovy" value="3" />
           <entry key="html" value="1" />
@@ -63,7 +54,7 @@
           <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
           <entry key="PHP" value="30" />
-          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="Scratch" value="3" />
         </counts>
       </usages-collector>
@@ -96,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traits/TienSwaggerMiddle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="930">
               <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
             </state>
           </provider>
@@ -105,7 +96,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traits/Tien.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
+            <state relative-caret-position="2542">
               <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
               <folding>
                 <element signature="e#124#162#0#PHP" expanded="true" />
@@ -117,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traits/TienValidate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="103" column="15" selection-start-line="103" selection-start-column="15" selection-end-line="103" selection-end-column="15" />
+            <state relative-caret-position="3069">
+              <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -126,17 +117,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traits/TienTools.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
+            <state relative-caret-position="465">
               <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/traits/TienValidateMiddle.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="301">
-              <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+              <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -211,6 +211,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -240,17 +241,10 @@
               <item name="swagger" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="swagger" type="b2602c69:ProjectViewProjectNode" />
-              <item name="swagger" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="image" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -297,18 +291,19 @@
       <workItem from="1543655101168" duration="214000" />
       <workItem from="1543657755439" duration="52000" />
       <workItem from="1544173560350" duration="80000" />
-      <workItem from="1546095283785" duration="6948000" />
+      <workItem from="1546095283785" duration="7152000" />
+      <workItem from="1546354300335" duration="353000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60028000" />
+    <option name="totallyTimeSpent" value="60585000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19527897" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1981402" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -336,13 +331,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ui/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/dist/index.html" />
     <entry file="file://$PROJECT_DIR$/vendor/zircote/swagger-php/Examples/using-refs/Product.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -369,9 +358,6 @@
           <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.lock">
       <provider selected="true" editor-type-id="text-editor" />
@@ -434,28 +420,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/traits/TienSwaggerMiddle.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="930">
           <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/traits/TienTools.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/traits/TienValidate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="103" column="15" selection-start-line="103" selection-start-column="15" selection-end-line="103" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/traits/Tien.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
+        <state relative-caret-position="2542">
           <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
           <folding>
             <element signature="e#124#162#0#PHP" expanded="true" />
@@ -463,10 +435,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/traits/TienValidate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3069">
+          <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/traits/TienTools.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/traits/TienValidateMiddle.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
-          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
