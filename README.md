@@ -11,11 +11,14 @@ $ composer require tien/swagger --dev
 ## Usage
 
 ### 该扩展仅支持 ThinkPhp5 框架使用。
-### 注意：生成 api 文档只能在调试环境下使用，正式环境不会生效。而支持 swagger-php 的版本为 2.0 以上， 3.0 以下。支持 PHP7 及以上版本。只支持四种请求方法：GET、POST、DELETE 和 PUT.
+### 注意：
+生成 api 文档只能在调试环境下使用，正式环境不会生效。而支持 swagger-php 的版本为 2.0 以上， 3.0 以下。支持 PHP7 及以上版本。只支持四种请求方法：GET、POST、DELETE 和 PUT.
 ### 默认注释生成的文件在 'application/swagger/'下。
-### 题外话：写这个是个人对代码有强迫症，看不习惯控制器里绝大部分是 swagger 注释，也想过拎出来放单独一个页面的，但又觉得写起来很烦（太多重复的代码了），那就干脆自动生成吧。
+### 题外话：
+写这个是个人对代码有强迫症，看不习惯控制器里绝大部分是 swagger 注释，也想过拎出来放单独一个页面的，但又觉得写起来很烦（太多重复的代码了），那就干脆自动生成吧。
 
-## 需要将安装包 ui 文件下的 dist 目录移动到 public 目录下；调用相应的方法后，需要在项目的根目录下运行如下命令一(下文将用‘命名一’表示该命令)，然后可在 http://127.0.0.01:8000/dist/index.html 下查看效果：
+## 查看效果
+需要将安装包 ui 文件下的 dist 目录移动到 public 目录下；调用相应的方法后，需要在项目的根目录下运行如下命令一(下文将用‘命名一’表示该命令)，然后可在 http://127.0.0.01:8000/dist/index.html 下查看效果：
 ```shell
 $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagger.json
 ```
