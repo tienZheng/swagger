@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Tien
  * Date: 2018/11/26
- * Time: 2:52 PM
+ * Time: 2:52 PM.
  */
 
 namespace Tien\Swagger\traits;
-
 
 use Tien\Swagger\HandleMethod;
 
@@ -16,12 +15,14 @@ trait TienSwaggerMiddle
     use Tien;
 
     /**
-     *: 生成 swagger 文档中间件处理 handle
+     *: 生成 swagger 文档中间件处理 handle.
      *
      * @param $request
      * @param string $filePath
-     * @param bool $isThrow
+     * @param bool   $isThrow
+     *
      * @return mixed
+     *
      * @throws \Tien\Swagger\exceptions\Exception
      * @throws \Tien\Swagger\exceptions\FileException
      * @throws \Tien\Swagger\exceptions\InvalidArgumentException
@@ -34,7 +35,7 @@ trait TienSwaggerMiddle
         }
 
         $this->request = $request;
-        
+
         //初始化
         $this->tienInit($filePath, $isThrow);
 
@@ -44,26 +45,27 @@ trait TienSwaggerMiddle
         }
 
         //获取到 api 文本简介信息
-        $apiTextName    = $this->action.'Text';
-        $apiText        = $this->validate->{$apiTextName};
-        $handleMethod   = new HandleMethod($this->filePath, $this->path);
+        $apiTextName = $this->action.'Text';
+        $apiText = $this->validate->{$apiTextName};
+        $handleMethod = new HandleMethod($this->filePath, $this->path);
         $handleMethod->setContent($this->apiParam);
 
         //确定请求方法
         $method = strtolower($request->method());
-        if ($method == 'post') {
+        if ('post' == $method) {
             $handleMethod->post();
-        } elseif ($method == 'get') {
+        } elseif ('get' == $method) {
             $handleMethod->get();
-        } elseif ($method == 'put') {
+        } elseif ('put' == $method) {
             $handleMethod->put();
-        } elseif ($method == 'delete') {
+        } elseif ('delete' == $method) {
             $handleMethod->methodDelete();
         }
 
         //生成解析文档
         $handleMethod->summary($apiText['summary'] ?? '');
         $handleMethod->description($apiText['description'] ?? $apiText['summary'] ?? '');
+
         return $handleMethod->create();
     }
 }

@@ -37,7 +37,7 @@ class HandleMethod extends Handle
         'post' => 'formData',
         'get' => 'query',
         'put' => 'formData',
-        'delete' => 'query'
+        'delete' => 'query',
     ];
 
     /**
@@ -123,7 +123,8 @@ class HandleMethod extends Handle
     protected $Parameter = '';
 
     /**
-     * 是否是 path 格式
+     * 是否是 path 格式.
+     *
      * @var array
      */
     protected $pathInfo = [];
@@ -159,15 +160,15 @@ class HandleMethod extends Handle
     }
 
     /**
-     * 获取路径信息
+     * 获取路径信息.
      */
     protected function getPathInfo()
     {
-        if (($index = strpos($this->path, '<')) !== false) {
-            if (($end = strpos($this->path, '>')) !== false) {
+        if (false !== ($index = strpos($this->path, '<'))) {
+            if (false !== ($end = strpos($this->path, '>'))) {
                 $pathKey = substr($this->path, $index + 1, $end - $index - 1);
                 $this->pathInfo = [
-                    true, $index, $end, $pathKey
+                    true, $index, $end, $pathKey,
                 ];
                 //<>替换成 {}
                 $this->path = substr_replace($this->path, '{', $index, 1);
@@ -175,8 +176,6 @@ class HandleMethod extends Handle
             }
         }
     }
-
-
 
     /**
      *获取标签名.
@@ -299,8 +298,10 @@ class HandleMethod extends Handle
 
     /**
      * 获取 in 的值
+     *
      * @param string $key
      * @param $method
+     *
      * @return mixed|string
      */
     protected function getIn(string $key)
@@ -310,6 +311,7 @@ class HandleMethod extends Handle
                 return 'path';
             }
         }
+
         return $this->methodParam[strtolower($this->method)];
     }
 
@@ -438,17 +440,20 @@ class HandleMethod extends Handle
         switch ($method) {
             case 'get':
                 $this->swaggerMethod = Config::$methodGet;
+
                 return;
             case 'post':
                 $this->swaggerMethod = Config::$methodPost;
+
                 return;
             case 'put':
                 $this->swaggerMethod = Config::$methodPut;
+
                 return;
             case 'delete':
                 $this->swaggerMethod = Config::$methodDelete;
-                return;
 
+                return;
         }
         $this->swaggerMethod = Config::$methodPost;
     }
