@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3743b27d-2dc7-4bca-8695-cc6adff75409" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/dist/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/oauth2-redirect.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-standalone-preset.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui-standalone-preset.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/dist/swagger-ui.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/image/tmp_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/image/tmp_2.png" beforeDir="false" />
-    </list>
+    <list default="true" id="3743b27d-2dc7-4bca-8695-cc6adff75409" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +15,7 @@
     <session id="411619257">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -46,6 +30,7 @@
           <entry key="html" value="1" />
           <entry key="json" value="1" />
           <entry key="lock" value="1" />
+          <entry key="md" value="1" />
           <entry key="php" value="30" />
         </counts>
       </usages-collector>
@@ -53,6 +38,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
+          <entry key="Markdown" value="1" />
           <entry key="PHP" value="30" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="Scratch" value="3" />
@@ -63,6 +49,7 @@
           <entry key="dummy" value="32" />
           <entry key="html" value="13" />
           <entry key="json" value="23" />
+          <entry key="md" value="17" />
           <entry key="php" value="10294" />
         </counts>
       </usages-collector>
@@ -70,6 +57,7 @@
         <counts>
           <entry key="HTML" value="13" />
           <entry key="JSON" value="23" />
+          <entry key="Markdown" value="17" />
           <entry key="PHP" value="10294" />
           <entry key="PLAIN_TEXT" value="32" />
         </counts>
@@ -132,11 +120,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="124">
               <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="92">
+                <caret line="2" column="68" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -181,6 +181,7 @@
         <option value="$PROJECT_DIR$/src/traits/TienTools.php" />
         <option value="$PROJECT_DIR$/src/traits/TienValidate.php" />
         <option value="$PROJECT_DIR$/src/traits/Tien.php" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -292,16 +293,15 @@
       <workItem from="1543657755439" duration="52000" />
       <workItem from="1544173560350" duration="80000" />
       <workItem from="1546095283785" duration="7152000" />
-      <workItem from="1546354300335" duration="353000" />
+      <workItem from="1546354300335" duration="559000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60585000" />
+    <option name="totallyTimeSpent" value="60791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1981402" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -460,6 +460,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="92">
+            <caret line="2" column="68" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

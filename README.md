@@ -5,22 +5,27 @@
 ## Installing
 
 ```shell
-$ composer require tien/swagger --dev
+$ composer require tien/swagger
 ```
 
 ## Usage
 
 ### 该扩展仅支持 ThinkPhp5 框架使用。
 ### 注意：
-生成 api 文档只能在调试环境下使用，正式环境不会生效。而支持 swagger-php 的版本为 2.0 以上， 3.0 以下。支持 PHP7 及以上版本。只支持四种请求方法：GET、POST、DELETE 和 PUT.
+-
+	1. 当框架处于生产环境时，生成 api 文档不会生效。
+	2. 要求 swagger-php: 2.0 ~ 3.0
+	3. php7+
+	4. 只支持四种请求方式：GET、POST、DELETE 和 PUT.
+
 ### 默认注释生成的文件在 'application/swagger/'下。
-### 题外话：
-写这个是个人对代码有强迫症，看不习惯控制器里绝大部分是 swagger 注释，也想过拎出来放单独一个页面的，但又觉得写起来很烦（太多重复的代码了），那就干脆自动生成吧。
 
 ## 查看效果
 需要将安装包 ui 文件下的 dist 目录移动到 public 目录下；调用相应的方法后，需要在项目的根目录下运行如下命令一(下文将用‘命名一’表示该命令)，然后可在 http://127.0.0.01:8000/dist/index.html 下查看效果：
+
 ```shell
 $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagger.json
+
 ```
 ### 生成 api 文档注释，及模块标签
 	namespace app\index\controller;
@@ -79,9 +84,11 @@ $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagg
 ### 效果如下图所示：
  ![avatar](./ui/image/summaryAndTags.png)
  
-### 生成方法体注释，有两种方法，第一是通过中间件，简单方便，代码也会更简洁。第二种方法是直接在控制器调用相应的方法，用于特殊情形。两种方法都需要与验证类结合使用，该验证类要求是与控制器处于同一模块下，且类名与控制器名是一样的(注意观察验证类下属性的命名特征)。
+### 生成方法体注释:
+有两种方法，第一是通过中间件，简单方便，代码也会更简洁。第二种方法是直接在控制器调用相应的方法，用于特殊情形。两种方法都需要与验证类结合使用，该验证类要求是与控制器处于同一模块下，且类名与控制器名是一样的(注意观察验证类下属性的命名特征)。
 
-### 先看验证类，假设是为了 admin 模块下的 index 控制器里的  create 方法生成注释体。
+### 先看验证类
+假设是为了 admin 模块下的 index 控制器里的  create 方法生成注释体。
 #### admin 模块 index 验证类
 	namespace app\admin\validate;
 
@@ -197,7 +204,8 @@ $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagg
 		}
 	}
 
-### 在验证类的 createMsg 其实还可以用于验证错误信息的友好提示。请求参数的验证强烈建议用前置中间件完成，不应该放在控制器去完成，因为在进入控制器之前可能会调用其他的前置中间件。
+### 其他用途：
+在验证类的 createMsg 其实还可以用于验证错误信息的友好提示。请求参数的验证强烈建议用前置中间件完成，不应该放在控制器去完成，因为在进入控制器之前可能会调用其他的前置中间件。
 #### 首先需要在验证类引入 TienValidate， 如下所示：
 	class Admin extends Validate
 	{
@@ -248,8 +256,9 @@ $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagg
        }
 		
 	}
-### 最后也在这里写一下个人使用的一些小的心得。在完成一个资源列表接口时，肯定会遇到排序的问题，有的时候还是根据不同的属性进行升序或降序，我是如下处理的。
-#### 在验证类中是这样的，还是以 admin 模块下的 index 验证类举例(一定要引入TienValidate)：
+### 问题处理交流一：
+在完成一个资源列表接口时，肯定会遇到排序的问题，有的时候还是根据不同的属性进行升序或降序，我是如下处理的。
+#### 还是以 admin 模块下的 index 验证类举例(一定要引入TienValidate)：
 
 	public $index = [
         'page'      => 'require|gt:0',
@@ -286,7 +295,9 @@ $ php vendor/zircote/swagger-php/bin/swagger ./application/ -o public/dist/swagg
         var_dump($order);	// 假如请求参数中 order 填写的是 "mobile,desc|birthday,asc", 那么输出的应该是 ['mobile' => 'desc', 'birthday' => 'asc']。这样就能更加方便的调用了
 	  
     }
-### 还有一个遇到的问题是，有的资源在更新时，有些属性是不允许更新的。这个问题的处理方法有很多中，而我的处理方法是直接在请求参数验证时直接排除，如下所示：
+### 问题处理交流二：
+有的资源在更新时，有些属性是不允许更新的。这个问题的处理方法有很多中，而我的处理方法是直接在请求参数验证时直接排除，如下所示：
+
 	//验证类代码实现
 	...
 	use TienValidate;
@@ -321,7 +332,9 @@ You can contribute in one of three ways:
 _The code contribution process is not very formal. You just need to make sure that you follow the PSR-0, PSR-1, and PSR-2 coding guidelines._
 
 ## Another
-_该 Demo 只是为了学习，若有侵权或不妥之处，请联系 913346548@qq.com, 我会及时处理，谢谢！
+_写这个是个人对代码有强迫症，看不习惯控制器里绝大部分是 swagger 注释，也想过拎出来放单独一个页面的，但又觉得写起来很烦（太多重复的代码了），那就干脆自动生成吧。
+
+该 Demo 只是为了学习，若有侵权或不妥之处，请联系 913346548@qq.com, 我会及时处理，谢谢！
 若各位同学有好的建议或见解，也请您能不吝赐教。
 如果同学们觉得这个能给你带来一点点帮助，千万记得 star 哈，那将是给我最大的鼓励！谢谢！！_
 
