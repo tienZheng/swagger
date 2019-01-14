@@ -154,7 +154,7 @@ class HandleMethod extends Handle
         $this->createFile();
         $this->verifyFileIsExists();
         $this->getoperationId();
-        $this->path = DIRECTORY_SEPARATOR.$this->path;
+        $this->path = '/' . $this->path;
         $this->getFileContent();
     }
 
@@ -185,7 +185,7 @@ class HandleMethod extends Handle
      */
     protected function getTagName()
     {
-        $this->tagName = ucfirst(substr($this->path, 0, strpos($this->path, DIRECTORY_SEPARATOR)));
+        $this->tagName = ucfirst(substr($this->path, 0, strpos($this->path, '/')));
         if (!$this->tagName) {
             throw new InvalidArgumentException('传参不符合要求');
         }
@@ -203,7 +203,7 @@ class HandleMethod extends Handle
         } else {
             $realPath = $this->path;
         }
-        $this->operationId = substr($realPath, strrpos($realPath, DIRECTORY_SEPARATOR) + 1);
+        $this->operationId = substr($realPath, strrpos($realPath, '/') + 1);
         if (!$this->operationId) {
             throw new InvalidArgumentException('传参不符合要求');
         }
