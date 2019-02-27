@@ -2,7 +2,10 @@
 
 <p align="center"> 专门为 ThinkPhp5 生成Api文档，基于 Swagger-php 及 Swagger-ui.</p>
 
-## Installing
+## 注意
+该项目已被放弃，请转 [tien/think-swagger](https://github.com/tienZheng/think-swagger) 和 [tien/think-valiate](https://github.com/tienZheng/think-validate)
+
+## 安装
 
 ```shell
 $ composer require tien/swagger
