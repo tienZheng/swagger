@@ -3,15 +3,13 @@
  * Created by PhpStorm.
  * User: Tien
  * Date: 2018/11/27
- * Time: 10:24 AM
+ * Time: 10:24 AM.
  */
 
 namespace Tien\Swagger;
 
-
 class HandleSummary extends Handle
 {
-
     protected $schemes = '{"http","https"}';
 
     protected $host;
@@ -38,12 +36,10 @@ class HandleSummary extends Handle
         $this->getFileContent();
     }
 
-
     public function update()
     {
         // TODO: Implement update() method.
     }
-
 
     public function create()
     {
@@ -63,8 +59,6 @@ class HandleSummary extends Handle
         return true;
     }
 
-
-
     public function formatContent(array $param): string
     {
         return $this->notesStart.PHP_EOL.' * '.Config::$swagger.'('.PHP_EOL.
@@ -72,15 +66,14 @@ class HandleSummary extends Handle
             " *\t   host=\"{$this->host}\",".PHP_EOL.
             " *\t   consumes={\"multipart/form-data\"},".PHP_EOL.
             " *\t   produces={\"$this->produces\"},".PHP_EOL.
-            " *\t   ".Config::$info."(".PHP_EOL.
+            " *\t   ".Config::$info.'('.PHP_EOL.
             " *\t     version=\"$this->version\",".PHP_EOL.
             " *\t     title=\"$this->title\",".PHP_EOL.
             " *\t     description=\"$this->description\"".PHP_EOL.
             " *\t),".PHP_EOL.
-            " * )".PHP_EOL.
+            ' * )'.PHP_EOL.
             ' '.$this->notesEnd;
     }
-
 
     public function host(string $host)
     {
@@ -89,7 +82,6 @@ class HandleSummary extends Handle
         return $this;
     }
 
-
     public function schemes(array $schemes)
     {
         $this->schemes = '';
@@ -97,9 +89,9 @@ class HandleSummary extends Handle
             $this->schemes .= "{$scheme},";
         }
         $this->schemes = '{'.$this->schemes.'}';
+
         return $this;
     }
-
 
     public function produces(string $produces)
     {
@@ -108,7 +100,6 @@ class HandleSummary extends Handle
         return $this;
     }
 
-
     public function version(string $version)
     {
         $this->version = $version;
@@ -116,15 +107,12 @@ class HandleSummary extends Handle
         return $this;
     }
 
-
     public function title(string $title)
     {
         $this->title = $title;
 
         return $this;
     }
-
-
 
     public function description(string $description)
     {
